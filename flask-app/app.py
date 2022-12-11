@@ -1,6 +1,16 @@
-###
-# Main application interface
-###
+from flask import Flask, jsonify
+from flaskext.mysql import MySQL
+
+app = Flask(__name__)
+
+app.config['MYSQL_DATABASE_HOST'] = 'db'
+app.config['MYSQL_DATABASE_PORT'] = 3306
+app.config['MYSQL_DATABASE_USER'] = 'webapp'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'abc123'
+app.config['MYSQL_DATABASE_DB'] = 'bp_analytics_db'
+
+db_connection = MYSQL()
+db_connection.init_app(app)
 
 # import the create app function 
 # that lives in src/__init__.py
