@@ -26,13 +26,11 @@ def create_app():
     db.init_app(app)
 
     # Import the various routes
-    from src.bettors.bettors import bettors
     from src.athletecoaches.athletecoaches import athletecoaches
     from src.tournamentorganizers.tourorganizers import tourorganizers
 
     # Register the routes that we just imported so they can be properly handled
     app.register_blueprint(athletecoaches,     url_prefix='/athcoach')
-    app.register_blueprint(bettors,            url_prefix='/bettors')
     app.register_blueprint(tourorganizers,     url_prefix='/tourorg')
 
     return app

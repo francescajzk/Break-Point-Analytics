@@ -43,7 +43,7 @@ def add_player():
 @tourorganizers.route('/tourmatches/<tourID>', methods=['GET'])
 def get_matches(tourID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from matchInfo WHERE tourID = {0}'.format(playerID))
+    cursor.execute('select * from matchInfo WHERE tourID = {0}'.format(tourID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -58,7 +58,7 @@ def get_matches(tourID):
 @tourorganizers.route('/tourprizemoney/<tourID>', methods=['GET'])
 def get_prizemoney(tourID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from prizeMoney WHERE tourID = {0}'.format(playerID))
+    cursor.execute('select * from prizeMoney WHERE tourID = {0}'.format(tourID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
